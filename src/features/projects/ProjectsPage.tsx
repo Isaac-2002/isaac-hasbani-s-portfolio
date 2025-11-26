@@ -1,64 +1,10 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Github, ExternalLink } from "lucide-react";
-import { Layout } from "@/components/layout/Layout";
+import { Layout } from "@/shared/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import projectAws from "@/assets/project-aws.png";
-import projectAsos from "@/assets/project-asos.png";
-import projectOlympic from "@/assets/project-olympic.png";
-import projectCanvas from "@/assets/project-canvas.png";
-
-export interface Project {
-  id: string;
-  title: string;
-  category: string;
-  description: string;
-  techStack: string[];
-  github?: string;
-  demo?: string;
-  image: string;
-}
-
-const projects: Project[] = [
-  {
-    id: "aws-cloud-resume",
-    title: "AWS Cloud Resume Challenge",
-    category: "Cloud",
-    description: "Built a serverless resume website using AWS services including S3, CloudFront, Lambda, DynamoDB, and API Gateway. Implemented CI/CD with GitHub Actions.",
-    techStack: ["AWS", "Python", "JavaScript", "Terraform", "GitHub Actions"],
-    github: "https://github.com/isaachasbani/cloud-resume",
-    image: projectAws,
-  },
-  {
-    id: "asos-recommender",
-    title: "ASOS Outfit Recommender",
-    category: "AI/ML",
-    description: "Developed an intelligent outfit recommendation system that scrapes ASOS products, integrates Weatherstack API for weather data, and uses GPT for personalized suggestions.",
-    techStack: ["Python", "OpenAI GPT", "Weatherstack API", "Web Scraping", "FastAPI"],
-    github: "https://github.com/isaachasbani/outfit-recommender",
-    image: projectAsos,
-  },
-  {
-    id: "olympic-data-story",
-    title: "Olympic House Price Data Story",
-    category: "Data Analysis",
-    description: "An interactive data story exploring the relationship between Olympic events and local house prices, using advanced visualization and statistical analysis.",
-    techStack: ["Python", "Pandas", "Plotly", "Statistical Analysis"],
-    github: "https://github.com/isaachasbani/olympic-analysis",
-    image: projectOlympic,
-  },
-  {
-    id: "canvas-grade-processor",
-    title: "Canvas Grade Processor",
-    category: "Web App",
-    description: "A full-stack web application for processing and analyzing Canvas LMS grades. Features AWS Lambda backend and modern Next.js frontend with real-time updates.",
-    techStack: ["Next.js", "TypeScript", "AWS Lambda", "DynamoDB", "Tailwind CSS"],
-    github: "https://github.com/isaachasbani/canvas-processor",
-    demo: "https://canvas-processor.vercel.app",
-    image: projectCanvas,
-  },
-];
+import { projects } from "@/data/projects";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -73,7 +19,7 @@ const stagger = {
   },
 };
 
-const Projects = () => {
+export function ProjectsPage() {
   return (
     <Layout>
       {/* Hero Section */}
@@ -94,7 +40,7 @@ const Projects = () => {
               variants={fadeUp}
               className="mt-4 max-w-2xl text-lg text-muted-foreground"
             >
-              A collection of my work spanning cloud infrastructure, AI/ML applications, 
+              A collection of my work spanning cloud infrastructure, AI/ML applications,
               data analysis, and full-stack development.
             </motion.p>
           </motion.div>
@@ -174,6 +120,4 @@ const Projects = () => {
       </section>
     </Layout>
   );
-};
-
-export default Projects;
+}

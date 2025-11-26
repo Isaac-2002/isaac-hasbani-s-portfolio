@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Github, ExternalLink } from "lucide-react";
-import { Layout } from "@/components/layout/Layout";
+import { Layout } from "@/shared/layout/Layout";
 import { Button } from "@/components/ui/button";
 
 interface ProjectDetail {
@@ -38,7 +38,7 @@ The main challenge was setting up proper IAM permissions and ensuring secure com
 This project deepened my understanding of serverless architecture and the importance of infrastructure automation. It also reinforced best practices for security and cost optimization in the cloud.
     `,
     techStack: ["AWS S3", "CloudFront", "Lambda", "DynamoDB", "API Gateway", "Terraform", "GitHub Actions", "Python", "JavaScript"],
-    github: "https://github.com/isaachasbani/cloud-resume",
+    github: "https://github.com/Isaac-2002/cloud-resume",
   },
   "asos-recommender": {
     id: "asos-recommender",
@@ -64,7 +64,7 @@ A personalized outfit recommendation system that combines web scraping, weather 
 Planning to add user accounts, preference history, and a mobile-friendly frontend.
     `,
     techStack: ["Python", "OpenAI GPT", "Weatherstack API", "FastAPI", "Web Scraping", "BeautifulSoup"],
-    github: "https://github.com/isaachasbani/outfit-recommender",
+    github: "https://github.com/Isaac-2002/outfit-recommender",
   },
   "olympic-data-story": {
     id: "olympic-data-story",
@@ -89,7 +89,7 @@ An in-depth data journalism project exploring the economic impact of Olympic Gam
 The analysis revealed that host cities typically experience a housing price increase of 15-20% in the 3-5 years leading up to the games, with varied post-event outcomes depending on the city's overall economic trajectory.
     `,
     techStack: ["Python", "Pandas", "Plotly", "NumPy", "Statistical Analysis", "Data Visualization"],
-    github: "https://github.com/isaachasbani/olympic-analysis",
+    github: "https://github.com/Isaac-2002/olympic-analysis",
   },
   "canvas-grade-processor": {
     id: "canvas-grade-processor",
@@ -116,7 +116,7 @@ A comprehensive web application designed to help students and educators analyze 
 The app prioritizes simplicity and clarity, making it easy for users to understand their academic standing at a glance while providing deeper analytics for those who want to dive in.
     `,
     techStack: ["Next.js", "TypeScript", "AWS Lambda", "DynamoDB", "Tailwind CSS", "Chart.js"],
-    github: "https://github.com/isaachasbani/canvas-processor",
+    github: "https://github.com/Isaac-2002/canvas-processor",
     demo: "https://canvas-processor.vercel.app",
   },
 };

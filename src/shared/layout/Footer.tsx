@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import { Linkedin, Github, Mail, Twitter } from "lucide-react";
+import { Linkedin, Github, Mail } from "lucide-react";
 
 const socialLinks = [
   { icon: Linkedin, href: "https://linkedin.com/in/isaachasbani", label: "LinkedIn" },
-  { icon: Github, href: "https://github.com/isaachasbani", label: "GitHub" },
-  { icon: Twitter, href: "https://twitter.com/isaachasbani", label: "Twitter" },
-  { icon: Mail, href: "mailto:isaac@example.com", label: "Email" },
+  { icon: Github, href: "https://github.com/Isaac-2002", label: "GitHub" },
+  { icon: Mail, href: "mailto:isaachasbani@gmail.com", label: "Email" },
 ];
 
 export function Footer() {

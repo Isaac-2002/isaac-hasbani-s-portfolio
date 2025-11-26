@@ -1,16 +1,12 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
   { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
   { name: "Projects", path: "/projects" },
   { name: "Blog", path: "/blog" },
-  { name: "CV", path: "/cv" },
-  { name: "Contact", path: "/contact" },
 ];
 
 export function Navbar() {
@@ -19,16 +15,8 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-      <nav className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
-        {/* Logo */}
-        <Link
-          to="/"
-          className="text-xl font-bold tracking-tight transition-colors hover:text-primary"
-        >
-          Isaac<span className="text-primary">.</span>
-        </Link>
-
-        {/* Desktop Navigation */}
+      <nav className="container mx-auto flex h-16 items-center px-4 lg:px-8">
+        {/* Desktop Navigation - Moved to left */}
         <div className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => (
             <Link
@@ -44,16 +32,6 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
-        </div>
-
-        {/* CTA Button */}
-        <div className="hidden md:block">
-          <Button variant="outline" size="sm" asChild>
-            <Link to="/contact" className="gap-2">
-              <Mail className="h-4 w-4" />
-              Get in touch
-            </Link>
-          </Button>
         </div>
 
         {/* Mobile Menu Button */}

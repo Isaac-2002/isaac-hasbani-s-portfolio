@@ -1,52 +1,9 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Calendar } from "lucide-react";
-import { Layout } from "@/components/layout/Layout";
+import { Layout } from "@/shared/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
-
-interface BlogPost {
-  id: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  category: string;
-  readTime: string;
-}
-
-const blogPosts: BlogPost[] = [
-  {
-    id: "ai-product-strategy",
-    title: "How AI is Reshaping Product Strategy",
-    excerpt: "Exploring how artificial intelligence is transforming the way we think about product development and user experience design.",
-    date: "Nov 15, 2024",
-    category: "AI & Product",
-    readTime: "5 min read",
-  },
-  {
-    id: "data-driven-decisions",
-    title: "The Art of Data-Driven Decision Making",
-    excerpt: "A practical guide to leveraging analytics for better business decisions without getting lost in the numbers.",
-    date: "Oct 28, 2024",
-    category: "Analytics",
-    readTime: "7 min read",
-  },
-  {
-    id: "lbs-journey",
-    title: "My Journey to London Business School",
-    excerpt: "Reflections on the application process, what I've learned so far, and advice for prospective students.",
-    date: "Sep 10, 2024",
-    category: "Personal",
-    readTime: "6 min read",
-  },
-  {
-    id: "cloud-resume-learnings",
-    title: "What I Learned Building the AWS Cloud Resume",
-    excerpt: "Key takeaways from completing the Cloud Resume Challenge and how it changed my approach to cloud architecture.",
-    date: "Aug 22, 2024",
-    category: "Tech",
-    readTime: "8 min read",
-  },
-];
+import { blogPosts } from "@/data/blog";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -61,7 +18,7 @@ const stagger = {
   },
 };
 
-const Blog = () => {
+export function BlogPage() {
   return (
     <Layout>
       {/* Hero Section */}
@@ -82,7 +39,7 @@ const Blog = () => {
               variants={fadeUp}
               className="mt-4 max-w-2xl text-lg text-muted-foreground"
             >
-              Thoughts on product strategy, AI, data analytics, and my journey 
+              Thoughts on product strategy, AI, data analytics, and my journey
               through the tech and business world.
             </motion.p>
           </motion.div>
@@ -132,6 +89,4 @@ const Blog = () => {
       </section>
     </Layout>
   );
-};
-
-export default Blog;
+}

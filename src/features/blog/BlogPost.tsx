@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
-import { Layout } from "@/components/layout/Layout";
+import { Layout } from "@/shared/layout/Layout";
 import { Button } from "@/components/ui/button";
 
 interface BlogPostData {

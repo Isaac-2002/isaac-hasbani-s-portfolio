@@ -3,15 +3,11 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import About from "./pages/About";
-import Projects from "./pages/Projects";
-import ProjectDetail from "./pages/ProjectDetail";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import CV from "./pages/CV";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
+import { HomePage } from "@/features/home";
+import { ProjectsPage, ProjectDetail } from "@/features/projects";
+import { BlogPage, BlogPost } from "@/features/blog";
+import NotFound from "@/shared/components/NotFound";
+import { ScrollToTop } from "@/shared/components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -21,15 +17,13 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/projects/:id" element={<ProjectDetail />} />
-          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:id" element={<BlogPost />} />
-          <Route path="/cv" element={<CV />} />
-          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
