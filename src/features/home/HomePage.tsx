@@ -42,7 +42,7 @@ export function HomePage() {
                 variants={fadeUp}
                 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
               >
-                Isaac Hasbani
+                Isaac Hasbani<span className="text-primary">.</span>
               </motion.h1>
 
               {/* Presentation text */}
@@ -51,23 +51,16 @@ export function HomePage() {
                 className="mt-6 max-w-3xl text-lg text-muted-foreground lg:text-xl leading-relaxed"
               >
                 <p>
-                  I'm an MSc student in{" "}
-                  <span className="inline-flex items-center gap-1 rounded-lg bg-secondary px-2 py-1 text-sm font-medium text-foreground">
-                    Analytics & Management
-                  </span>{" "}
-                  at London Business School, merging data science with{" "}
-                  <span className="inline-flex items-center gap-1 rounded-lg bg-secondary px-2 py-1 text-sm font-medium text-foreground">
-                    Product Strategy
-                  </span>{" "}
-                  to create impactful experiences. I craft{" "}
-                  <span className="inline-flex items-center gap-1 rounded-lg bg-secondary px-2 py-1 text-sm font-medium text-foreground">
-                    AI-powered products
-                  </span>{" "}
-                  and regularly share my learnings as{" "}
-                  <span className="inline-flex items-center gap-1 rounded-lg bg-secondary px-2 py-1 text-sm font-medium text-foreground">
-                    Insights
-                  </span>{" "}
-                  by writing about my discoveries in technology.
+                  Passionate about{" "}
+                  <span className="text-foreground font-semibold">tech products</span>{" "}
+                  and{" "}
+                  <span className="text-foreground font-semibold">venture capital</span>
+                  . I build{" "}
+                  <span className="text-foreground font-semibold">AI-powered products</span>{" "}
+                  and regularly share{" "}
+                  <span className="text-foreground font-semibold">insights</span>{" "}
+                  by writing about my discoveries in{" "}
+                  <span className="text-foreground font-semibold">technology</span>.
                 </p>
               </motion.div>
 
@@ -99,7 +92,9 @@ export function HomePage() {
                   <Mail className="h-5 w-5" />
                 </a>
                 <a
-                  href="/contact"
+                  href="https://calendly.com/isaac-hasbani/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2 hover:bg-secondary hover:border-primary/50 transition-all"
                 >
                   <Calendar className="h-5 w-5" />
