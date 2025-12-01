@@ -60,7 +60,17 @@ export function BlogPage() {
               <motion.div key={post.id} variants={fadeUp}>
                 <Link to={`/blog/${post.id}`}>
                   <Card className="group h-full cursor-pointer overflow-hidden hover:border-primary/50 hover-lift">
-                    <div className="aspect-video bg-secondary" />
+                    {post.image ? (
+                      <div className="aspect-video bg-secondary overflow-hidden">
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    ) : (
+                      <div className="aspect-video bg-secondary" />
+                    )}
                     <CardContent className="p-6">
                       <div className="flex items-center gap-3 text-sm text-muted-foreground">
                         <span className="rounded-md bg-primary/10 px-2 py-1 text-xs font-medium text-primary">

@@ -52,15 +52,13 @@ export function HomePage() {
               >
                 <p>
                   Passionate about{" "}
-                  <span className="text-foreground font-semibold">tech products</span>{" "}
+                  <span className="text-foreground font-semibold">Technology</span>{" "}
                   and{" "}
-                  <span className="text-foreground font-semibold">venture capital</span>
+                  <span className="text-foreground font-semibold">Venture Capital</span>
                   . I build{" "}
-                  <span className="text-foreground font-semibold">AI-powered products</span>{" "}
-                  and regularly share{" "}
-                  <span className="text-foreground font-semibold">insights</span>{" "}
-                  by writing about my discoveries in{" "}
-                  <span className="text-foreground font-semibold">technology</span>.
+                  <span className="text-foreground font-semibold">AI powered products</span>{" "}
+                  and regularly share insights about my discoveries in the{" "}
+                  <span className="text-foreground font-semibold">tech space</span>.
                 </p>
               </motion.div>
 
@@ -193,7 +191,17 @@ export function HomePage() {
               {featuredPosts.map((post) => (
                 <Link key={post.id} to={`/blog/${post.id}`}>
                   <Card className="group h-full cursor-pointer overflow-hidden hover:border-primary/50 hover-lift">
-                    <div className="aspect-video bg-secondary" />
+                    {post.image ? (
+                      <div className="aspect-video bg-secondary overflow-hidden">
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    ) : (
+                      <div className="aspect-video bg-secondary" />
+                    )}
                     <CardContent className="p-5">
                       <div className="flex items-center gap-2">
                         <span className="rounded-md bg-primary/10 px-2 py-1 text-xs font-medium text-primary">

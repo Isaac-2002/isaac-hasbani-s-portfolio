@@ -1,8 +1,9 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Briefcase, FileText, Lightbulb, Server, Code, Layers, Users, TrendingUp, CheckCircle } from "lucide-react";
 import { Layout } from "@/shared/layout/Layout";
 import { Button } from "@/components/ui/button";
+import dealImage from "@/assets/Deal.jpg";
 
 interface BlogPostData {
   id: string;
@@ -14,6 +15,94 @@ interface BlogPostData {
 }
 
 const blogPostsData: Record<string, BlogPostData> = {
+  "tech-shapes-ma-deals": {
+    id: "tech-shapes-ma-deals",
+    title: "How Tech Shapes M&A Deals: A Practical Guide",
+    date: "Dec 1, 2024",
+    category: "Tech Consulting",
+    readTime: "5 min read",
+    content: `
+I recently wrapped up an interview process for a top-tier tech consulting firm's private equity practice. Honestly? I learned more about the intersection of tech and PE in those interviews than in months of reading. So here's a short post on how technology drives investment decisions and a simple framework you can use to prepare for interview cases.
+
+## How Tech Consulting Firms Support M&A Deals
+
+When a private equity investor is evaluating an acquisition, they almost always call in tech consultants to run a technology due diligence (tech DD). These engagements are fast (think 3–4 weeks) and laser-focused on one massive question: **Is technology going to accelerate the investment thesis, or drag it underwater?**
+
+The stakes are high. PE firms are making significant bets that they can grow the company and exit at a profit. However, if the technology can't scale, or if the team is dysfunctional, the entire investment thesis falls apart.
+
+Let's look at a classic scenario and break it down with a simple structure.
+
+## The Scenario
+
+A private equity fund is evaluating the acquisition of TaskFlow, a B2B SaaS offering lightweight project management and team collaboration (think Trello/Asana). The investor wants to grow the company by adding features and expanding internationally, but before they buy, they hire you to run a tech DD and tell them whether to move forward.
+
+## How to Solve
+
+A good way to solve this case is to break the assessment into five key pillars:
+
+## 1. Infrastructure
+
+**Why it matters:**
+
+Infrastructure answers a simple question: can TaskFlow actually scale? If the platform can't handle more users, the growth thesis breaks before it even starts. On top of that, in a B2B environment, the infrastructure must meet the availability (percentage of time a system is operational and accessible to users) levels promised in Service Level Agreements (SLAs). SLAs define expected uptime and performance standards between the service provider and its clients. Ensuring the infrastructure can consistently meet these requirements is critical to avoid contractual penalties.
+
+**What to assess:**
+
+- **Cloud vs on-prem:** Modern cloud platforms (AWS, GCP, Azure) make it easy to scale and deploy across regions. On-prem servers tend to be slower, pricier, and more manual — not ideal if you're trying to ramp fast.
+- **Availability levels:** For SaaS, 99.9% availability (about 8.7 hours of downtime per year) is the expected baseline. Anything below that risks SLA breaches and dissatisfied customers.
+
+## 2. Software Architecture
+
+**Why it matters:**
+
+Architecture determines the pace of innovation and how easily TaskFlow can integrate with the broader ecosystem. If the architecture slows development, even small features take months instead of weeks. And if APIs are clunky or outdated, integrations become painful, which makes TaskFlow less sticky for customers.
+
+**What to assess:**
+
+- **Monolith vs microservices:** In a monolith, everything is bundled together, meaning changes in one area can cause ripple effects elsewhere. Microservices break the product into independent modules, allowing teams to ship faster and in parallel.
+- **API design:** Well-documented REST APIs are the standard today: lighter, flexible, and integration-friendly. SOAP, while functional, tends to be rigid and harder for partners to work with. Strong API design is often the secret ingredient to ecosystem growth.
+
+## 3. Tech Stack
+
+**Why it matters:**
+
+The tech stack affects development speed and cybersecurity risk. Legacy frameworks slow down delivery and make hiring harder and more expensive.
+
+**What to assess:**
+
+- **Frontend / backend / data layers:** Modern technologies (React, Node.js, PostgreSQL, etc.) are well-supported and come with deep talent pools. Older stacks (AngularJS, Classic ASP, Oracle 10g, etc.) are harder to maintain and often introduce avoidable vulnerabilities. Not exactly the foundation you want when scaling.
+
+## 4. People
+
+**Why it matters:**
+
+Even with the perfect stack, slow shipping kills growth. How engineering teams are organized and how efficiently they execute will tell you whether the roadmap is realistic.
+
+**What to assess:**
+
+- **Team topology:** Cross-functional product squads move faster than centralized structures where all roads lead through one architecture or DevOps team.
+- **DORA metrics:** Deployment frequency (how often code ships), lead time (idea to production), change failure rate (percentage of deployments causing failures), and mean time to recovery (how quickly issues are fixed) reveal team efficiency. High-performing teams deploy multiple times daily with low failure rates and fast recovery.
+
+## 5. Financial Efficiency
+
+**Why it matters:**
+
+Ultimately, the PE thesis needs numbers to work. Two key indicators here are how engineering time is allocated (KTLO vs innovation) and whether margins scale as revenue grows. If most of engineering is spent just keeping the platform alive, the company can't realistically build the features required for expansion without adding a lot more headcount.
+
+**What to assess:**
+
+- **KTLO vs innovation split:** Best-in-class SaaS players dedicate roughly 70% to innovation and 30% to KTLO. If TaskFlow's ratio is reversed, expect a heavy investment period before the growth strategy can take off.
+- **Gross margin:** COGS (especially hosting and infra) as a share of revenue reveals whether the business gets more profitable with scale — or just burns more cash with every customer added.
+
+## Conclusion
+
+This framework isn't the one and only way to approach a tech due diligence case, but it is a solid starting point that I've personally found useful. There are plenty of other case types too, from AI strategy to IT cost reduction or tech assessments for non-tech companies.
+
+Maybe I'll cover some of those in another post. For now, if you're preparing for tech consulting interviews, especially those with a private equity angle, this structure should give you a clear, structured way to break the case down and communicate your findings confidently.
+
+**Good luck!**
+    `,
+  },
   "ai-product-strategy": {
     id: "ai-product-strategy",
     title: "How AI is Reshaping Product Strategy",
@@ -171,6 +260,52 @@ For anyone looking to break into cloud computing, I highly recommend this challe
   },
 };
 
+// Helper function to parse inline bold text
+const parseBoldText = (text: string) => {
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={index} className="text-white font-bold">{part.slice(2, -2)}</strong>;
+    }
+    return part;
+  });
+};
+
+// Helper function to get icon and color for section titles
+const getSectionIcon = (title: string) => {
+  const titleLower = title.toLowerCase();
+
+  if (titleLower.includes('tech consulting') || titleLower.includes('m&a deals')) {
+    return { Icon: Briefcase, color: 'text-blue-500' };
+  }
+  if (titleLower.includes('scenario')) {
+    return { Icon: FileText, color: 'text-purple-500' };
+  }
+  if (titleLower.includes('how to solve')) {
+    return { Icon: Lightbulb, color: 'text-yellow-500' };
+  }
+  if (titleLower.includes('infrastructure')) {
+    return { Icon: Server, color: 'text-green-500' };
+  }
+  if (titleLower.includes('architecture')) {
+    return { Icon: Code, color: 'text-cyan-500' };
+  }
+  if (titleLower.includes('tech stack')) {
+    return { Icon: Layers, color: 'text-indigo-500' };
+  }
+  if (titleLower.includes('people')) {
+    return { Icon: Users, color: 'text-pink-500' };
+  }
+  if (titleLower.includes('financial')) {
+    return { Icon: TrendingUp, color: 'text-emerald-500' };
+  }
+  if (titleLower.includes('conclusion')) {
+    return { Icon: CheckCircle, color: 'text-orange-500' };
+  }
+
+  return null;
+};
+
 const BlogPost = () => {
   const { id } = useParams<{ id: string }>();
   const post = id ? blogPostsData[id] : null;
@@ -193,10 +328,18 @@ const BlogPost = () => {
 
   return (
     <Layout>
-      {/* Header */}
-      <section className="border-b border-border">
-        <div className="container mx-auto px-4 py-12 lg:px-8">
-          <Button variant="ghost" className="mb-6" asChild>
+      {/* Hero Section with Background Image */}
+      <section className="relative border-b border-border overflow-hidden">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${dealImage})` }}
+        />
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-background" />
+
+        <div className="relative z-10 container mx-auto px-4 py-12 lg:px-8 min-h-[60vh] flex flex-col justify-between">
+          <Button variant="ghost" className="mb-6 w-fit" asChild>
             <Link to="/blog">
               <ArrowLeft className="h-4 w-4" />
               Back to Blog
@@ -207,12 +350,12 @@ const BlogPost = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="max-w-3xl"
+            className="max-w-3xl pb-12"
           >
-            <span className="rounded-md bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+            <span className="rounded-md bg-primary/10 px-3 py-1 text-sm font-medium text-primary backdrop-blur-sm">
               {post.category}
             </span>
-            <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+            <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-foreground">
               {post.title}
             </h1>
             <div className="mt-4 flex items-center gap-4 text-muted-foreground">
@@ -229,15 +372,6 @@ const BlogPost = () => {
         </div>
       </section>
 
-      {/* Featured Image placeholder */}
-      <section className="border-b border-border bg-card/30">
-        <div className="container mx-auto px-4 py-8 lg:px-8">
-          <div className="aspect-video max-w-4xl mx-auto rounded-xl bg-secondary border border-border flex items-center justify-center">
-            <p className="text-muted-foreground">Featured image placeholder</p>
-          </div>
-        </div>
-      </section>
-
       {/* Content */}
       <section className="border-b border-border">
         <div className="container mx-auto px-4 py-16 lg:px-8">
@@ -250,16 +384,24 @@ const BlogPost = () => {
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               {post.content.split('\n').map((line, i) => {
                 if (line.startsWith('## ')) {
-                  return <h2 key={i} className="text-2xl font-bold text-foreground mt-10 mb-4">{line.replace('## ', '')}</h2>;
+                  const titleText = line.replace('## ', '');
+                  const iconData = getSectionIcon(titleText);
+
+                  return (
+                    <h2 key={i} className="text-2xl font-bold text-foreground mt-10 mb-4 flex items-center gap-3">
+                      {iconData && <iconData.Icon className={`h-7 w-7 ${iconData.color}`} />}
+                      {parseBoldText(titleText)}
+                    </h2>
+                  );
                 }
-                if (line.startsWith('**') && line.endsWith('**')) {
-                  return <p key={i} className="font-semibold text-foreground">{line.replace(/\*\*/g, '')}</p>;
+                if (line.startsWith('**') && line.endsWith('**') && line.indexOf('**', 2) === line.length - 2) {
+                  return <p key={i} className="font-bold text-white">{line.slice(2, -2)}</p>;
                 }
                 if (line.startsWith('- ')) {
-                  return <li key={i} className="ml-4">{line.replace('- ', '')}</li>;
+                  return <li key={i} className="ml-4">{parseBoldText(line.replace('- ', ''))}</li>;
                 }
                 if (line.trim()) {
-                  return <p key={i}>{line}</p>;
+                  return <p key={i}>{parseBoldText(line)}</p>;
                 }
                 return null;
               })}
