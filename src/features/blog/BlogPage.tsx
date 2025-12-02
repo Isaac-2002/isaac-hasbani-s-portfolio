@@ -59,7 +59,7 @@ export function BlogPage() {
             {blogPosts.map((post) => (
               <motion.div key={post.id} variants={fadeUp}>
                 <Link to={`/blog/${post.id}`}>
-                  <Card className="group h-full cursor-pointer overflow-hidden hover:border-primary/50 hover-lift">
+                  <Card className="group h-full cursor-pointer overflow-hidden hover-lift">
                     {post.image ? (
                       <div className="aspect-video bg-secondary overflow-hidden">
                         <img
@@ -86,9 +86,6 @@ export function BlogPage() {
                       <h3 className="mt-3 text-xl font-semibold group-hover:text-primary transition-colors">
                         {post.title}
                       </h3>
-                      <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
-                        {post.excerpt}
-                      </p>
                     </CardContent>
                   </Card>
                 </Link>

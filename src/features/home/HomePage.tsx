@@ -145,7 +145,7 @@ export function HomePage() {
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {featuredProjects.map((project) => (
                 <Link key={project.id} to={`/projects/${project.id}`}>
-                  <Card className="group h-full cursor-pointer overflow-hidden hover:border-primary/50 hover-lift">
+                  <Card className="group h-full cursor-pointer overflow-hidden hover-lift">
                     <div className="aspect-video bg-secondary" />
                     <CardContent className="p-5">
                       <div className="flex items-center gap-2">
@@ -190,7 +190,7 @@ export function HomePage() {
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {featuredPosts.map((post) => (
                 <Link key={post.id} to={`/blog/${post.id}`}>
-                  <Card className="group h-full cursor-pointer overflow-hidden hover:border-primary/50 hover-lift">
+                  <Card className="group h-full cursor-pointer overflow-hidden hover-lift">
                     {post.image ? (
                       <div className="aspect-video bg-secondary overflow-hidden">
                         <img
@@ -212,9 +212,6 @@ export function HomePage() {
                         </span>
                       </div>
                       <h3 className="mt-3 font-semibold">{post.title}</h3>
-                      <p className="mt-1 text-sm text-muted-foreground line-clamp-2">
-                        {post.excerpt}
-                      </p>
                     </CardContent>
                   </Card>
                 </Link>

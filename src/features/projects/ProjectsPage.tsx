@@ -60,7 +60,7 @@ export function ProjectsPage() {
             {projects.map((project) => (
               <motion.div key={project.id} variants={fadeUp}>
                 <Link to={`/projects/${project.id}`}>
-                  <Card className="group h-full cursor-pointer overflow-hidden hover:border-primary/50 hover-lift">
+                  <Card className="group h-full cursor-pointer overflow-hidden hover-lift">
                     <div className="aspect-video bg-secondary overflow-hidden">
                       <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     </div>

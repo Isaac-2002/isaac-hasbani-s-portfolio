@@ -265,7 +265,7 @@ const parseBoldText = (text: string) => {
   const parts = text.split(/(\*\*.*?\*\*)/g);
   return parts.map((part, index) => {
     if (part.startsWith('**') && part.endsWith('**')) {
-      return <strong key={index} className="text-white font-bold">{part.slice(2, -2)}</strong>;
+      return <strong key={index} className="text-foreground font-bold">{part.slice(2, -2)}</strong>;
     }
     return part;
   });
@@ -355,10 +355,10 @@ const BlogPost = () => {
             <span className="rounded-md bg-primary/10 px-3 py-1 text-sm font-medium text-primary backdrop-blur-sm">
               {post.category}
             </span>
-            <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-foreground">
+            <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-white">
               {post.title}
             </h1>
-            <div className="mt-4 flex items-center gap-4 text-muted-foreground">
+            <div className="mt-4 flex items-center gap-4 text-white/80">
               <span className="flex items-center gap-1">
                 <Calendar className="h-4 w-4" />
                 {post.date}
@@ -379,9 +379,9 @@ const BlogPost = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="prose prose-invert max-w-3xl mx-auto"
+            className="prose max-w-3xl mx-auto"
           >
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="space-y-4 text-muted-foreground leading-relaxed text-justify">
               {post.content.split('\n').map((line, i) => {
                 if (line.startsWith('## ')) {
                   const titleText = line.replace('## ', '');
@@ -395,7 +395,7 @@ const BlogPost = () => {
                   );
                 }
                 if (line.startsWith('**') && line.endsWith('**') && line.indexOf('**', 2) === line.length - 2) {
-                  return <p key={i} className="font-bold text-white">{line.slice(2, -2)}</p>;
+                  return <p key={i} className="font-bold text-foreground">{line.slice(2, -2)}</p>;
                 }
                 if (line.startsWith('- ')) {
                   return <li key={i} className="ml-4">{parseBoldText(line.replace('- ', ''))}</li>;

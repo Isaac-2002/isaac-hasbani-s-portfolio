@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/shared/components/ThemeToggle";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -15,8 +16,8 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-      <nav className="container mx-auto flex h-16 items-center px-4 lg:px-8">
-        {/* Desktop Navigation - Moved to left */}
+      <nav className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
+        {/* Desktop Navigation - Left side */}
         <div className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => (
             <Link
@@ -34,14 +35,22 @@ export function Navbar() {
           ))}
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="rounded-lg p-2 transition-colors hover:bg-secondary md:hidden"
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        {/* Desktop Theme Toggle */}
+        <div className="hidden md:block">
+          <ThemeToggle />
+        </div>
+
+        {/* Mobile Menu Button and Theme Toggle */}
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="rounded-lg p-2 transition-colors hover:bg-secondary"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Menu */}
