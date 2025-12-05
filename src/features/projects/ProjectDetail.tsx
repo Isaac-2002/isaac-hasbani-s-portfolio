@@ -13,6 +13,7 @@ interface ProjectDetail {
   techStack: string[];
   github?: string;
   demo?: string;
+  image?: string;
 }
 
 const projectsData: Record<string, ProjectDetail> = {
@@ -143,10 +144,25 @@ const ProjectDetail = () => {
 
   return (
     <Layout>
-      {/* Header */}
-      <section className="border-b border-border">
-        <div className="container mx-auto px-4 py-12 lg:px-8">
-          <Button variant="ghost" className="mb-6" asChild>
+      {/* Hero Section with Background Image */}
+      <section className="relative border-b border-border overflow-hidden">
+        {/* Background Image or Gradient */}
+        {project.image ? (
+          <>
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${project.image})` }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-background" />
+          </>
+        ) : (
+          <>
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary to-background" />
+          </>
+        )}
+
+        <div className="relative z-10 container mx-auto px-4 py-12 lg:px-8 min-h-[60vh] flex flex-col justify-between">
+          <Button variant="ghost" className="mb-6 w-fit" asChild>
             <Link to="/projects">
               <ArrowLeft className="h-4 w-4" />
               Back to Projects
@@ -157,14 +173,15 @@ const ProjectDetail = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            className="max-w-3xl pb-12"
           >
-            <span className="rounded-md bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+            <span className="rounded-md bg-primary/10 px-3 py-1 text-sm font-medium text-primary backdrop-blur-sm">
               {project.category}
             </span>
-            <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+            <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-white">
               {project.title}
             </h1>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p className="mt-4 text-lg text-white/80">
               {project.description}
             </p>
 
@@ -187,15 +204,6 @@ const ProjectDetail = () => {
               )}
             </div>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Screenshot placeholder */}
-      <section className="border-b border-border bg-card/30">
-        <div className="container mx-auto px-4 py-8 lg:px-8">
-          <div className="aspect-video max-w-4xl mx-auto rounded-xl bg-secondary border border-border flex items-center justify-center">
-            <p className="text-muted-foreground">Project screenshot placeholder</p>
-          </div>
         </div>
       </section>
 

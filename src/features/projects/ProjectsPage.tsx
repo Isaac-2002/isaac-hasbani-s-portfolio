@@ -40,8 +40,7 @@ export function ProjectsPage() {
               variants={fadeUp}
               className="mt-4 max-w-2xl text-lg text-muted-foreground"
             >
-              A collection of my work spanning cloud infrastructure, AI/ML applications,
-              data analysis, and full-stack development.
+              Basically, Cloud Stuff & Side Apps.
             </motion.p>
           </motion.div>
         </div>

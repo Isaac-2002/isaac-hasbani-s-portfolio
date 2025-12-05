@@ -18,7 +18,7 @@ const blogPostsData: Record<string, BlogPostData> = {
   "tech-shapes-ma-deals": {
     id: "tech-shapes-ma-deals",
     title: "How Tech Shapes M&A Deals: A Practical Guide",
-    date: "Dec 1, 2024",
+    date: "Dec 1, 2025",
     category: "Tech Consulting",
     readTime: "5 min read",
     content: `

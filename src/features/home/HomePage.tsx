@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Calendar, Linkedin, Github, Mail } from "lucide-react";
+import { ArrowRight, Calendar, Linkedin, Github, Mail, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -146,17 +146,37 @@ export function HomePage() {
               {featuredProjects.map((project) => (
                 <Link key={project.id} to={`/projects/${project.id}`}>
                   <Card className="group h-full cursor-pointer overflow-hidden hover-lift">
-                    <div className="aspect-video bg-secondary" />
-                    <CardContent className="p-5">
-                      <div className="flex items-center gap-2">
-                        <span className="rounded-md bg-primary/10 px-2 py-1 text-xs font-medium text-primary">
-                          {project.category}
-                        </span>
+                    {project.image ? (
+                      <div className="aspect-video bg-secondary overflow-hidden">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
                       </div>
-                      <h3 className="mt-3 font-semibold">{project.title}</h3>
-                      <p className="mt-1 text-sm text-muted-foreground">
-                        {project.description}
-                      </p>
+                    ) : (
+                      <div className="aspect-video bg-secondary" />
+                    )}
+                    <CardContent className="p-5">
+                      <h3 className="font-semibold">{project.title}</h3>
+                      <div className="mt-4 flex items-center gap-3">
+                        {project.github && (
+                          <Button variant="ghost" size="sm" className="h-8 px-2" asChild>
+                            <a href={project.github} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+                              <Github className="h-4 w-4" />
+                              GitHub
+                            </a>
+                          </Button>
+                        )}
+                        {project.demo && (
+                          <Button variant="ghost" size="sm" className="h-8 px-2" asChild>
+                            <a href={project.demo} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+                              <ExternalLink className="h-4 w-4" />
+                              Demo
+                            </a>
+                          </Button>
+                        )}
+                      </div>
                     </CardContent>
                   </Card>
                 </Link>
