@@ -55,11 +55,11 @@ Infrastructure answers a simple question: can TaskFlow actually scale? If the pl
 
 **Why it matters:**
 
-Architecture determines the pace of innovation and how easily TaskFlow can integrate with the broader ecosystem. If the architecture slows development, even small features take months instead of weeks. And if APIs are clunky or outdated, integrations become painful, which makes TaskFlow less sticky for customers.
+Architecture determines the pace of innovation and how easily TaskFlow can integrate with the broader ecosystem. If the architecture slows development, even small features take months instead of weeks. And if APIs are clunky or outdated, integrations with other tools become painful, which makes TaskFlow less sticky for customers.
 
 **What to assess:**
 
-- **Monolith vs microservices:** In a monolith, everything is bundled together, meaning changes in one area can cause ripple effects elsewhere. Microservices break the product into independent modules, allowing teams to ship faster and in parallel.
+- **Monolith vs microservices architectures:** In a monolith, everything is bundled together, meaning changes in one area can cause ripple effects elsewhere. Microservices break the product into independent modules, allowing teams to ship faster and in parallel.
 - **API design:** Well-documented REST APIs are the standard today: lighter, flexible, and integration-friendly. SOAP, while functional, tends to be rigid and harder for partners to work with. Strong API design is often the secret ingredient to ecosystem growth.
 
 ## 3. Tech Stack
@@ -96,9 +96,9 @@ Ultimately, the PE thesis needs numbers to work. Two key indicators here are how
 
 ## Conclusion
 
-This framework isn't the one and only way to approach a tech due diligence case, but it is a solid starting point that I've personally found useful. There are plenty of other case types too, from AI strategy to IT cost reduction or tech assessments for non-tech companies.
+This framework isn't the one and only way to approach a tech due diligence case, but it is a solid starting point that I've personally found useful. There are plenty of other case types too, from AI strategy to IT cost reduction or tech assessments for non-tech companies. Maybe I'll cover some of those in another post.
 
-Maybe I'll cover some of those in another post. For now, if you're preparing for tech consulting interviews, especially those with a private equity angle, this structure should give you a clear, structured way to break the case down and communicate your findings confidently.
+For now, if you're preparing for tech consulting interviews, especially those with a private equity angle, this structure should give you a clear, structured way to break the case down and communicate your findings confidently.
 
 **Good luck!**
     `,

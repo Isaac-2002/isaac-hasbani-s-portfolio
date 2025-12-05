@@ -3,6 +3,53 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Github, ExternalLink } from "lucide-react";
 import { Layout } from "@/shared/layout/Layout";
 import { Button } from "@/components/ui/button";
+import {
+  SiAmazon,
+  SiPython,
+  SiJavascript,
+  SiTerraform,
+  SiGithub,
+  SiOpenai,
+  SiFastapi,
+  SiReact,
+  SiTypescript,
+  SiTailwindcss,
+  SiNextdotjs,
+  SiPandas,
+  SiPlotly,
+  SiNumpy,
+  SiAwslambda
+} from "react-icons/si";
+import { IconType } from "react-icons";
+
+// Map technology names to their icons
+const techIcons: Record<string, IconType> = {
+  "AWS": SiAmazon,
+  "AWS S3": SiAmazon,
+  "CloudFront": SiAmazon,
+  "Lambda": SiAwslambda,
+  "DynamoDB": SiAmazon,
+  "API Gateway": SiAmazon,
+  "Python": SiPython,
+  "JavaScript": SiJavascript,
+  "TypeScript": SiTypescript,
+  "Terraform": SiTerraform,
+  "GitHub Actions": SiGithub,
+  "OpenAI GPT": SiOpenai,
+  "Weatherstack API": SiJavascript,
+  "FastAPI": SiFastapi,
+  "Web Scraping": SiPython,
+  "BeautifulSoup": SiPython,
+  "Pandas": SiPandas,
+  "Plotly": SiPlotly,
+  "NumPy": SiNumpy,
+  "Statistical Analysis": SiPython,
+  "Data Visualization": SiPlotly,
+  "Next.js": SiNextdotjs,
+  "Tailwind CSS": SiTailwindcss,
+  "Chart.js": SiJavascript,
+  "React": SiReact,
+};
 
 interface ProjectDetail {
   id: string;
@@ -245,15 +292,20 @@ const ProjectDetail = () => {
                 <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
                   Tech Stack
                 </h3>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {project.techStack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-lg bg-secondary px-3 py-1.5 text-sm font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                <div className="mt-3 flex flex-wrap gap-3">
+                  {project.techStack.map((tech) => {
+                    const Icon = techIcons[tech];
+                    return (
+                      <div
+                        key={tech}
+                        className="flex items-center gap-2 rounded-lg bg-secondary/50 px-3 py-2 text-sm font-medium hover:bg-secondary transition-colors"
+                        title={tech}
+                      >
+                        {Icon && <Icon className="h-5 w-5" />}
+                        <span>{tech}</span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </motion.div>
